@@ -1,0 +1,171 @@
+, decode(nvl(CREQ_SECR_CLRC_REQUIRED,'N'),
+'N', '<span class="fa fa-remove"><span class="u-VisuallyHidden">No</span></span>', --'<span class="u-VisuallyHidden">No</span>',
+'Y', '<span class="fa fa-check"><span class="u-VisuallyHidden">Yes</span></span>'
+  ) CREQ_SECR_CLRC_REQUIRED
+
+
+  decode(nvl(RESP_ID,''),
+  '', '<span class="fa fa-remove"><span class="u-VisuallyHidden">keine</span></span>', --'<span class="u-VisuallyHidden">No</span>',
+  ':RESP_ID', '<span class="fa fa-check"><span class="u-VisuallyHidden">Siehe</span></span>'
+    )
+
+javascript:$s('P2_ID','#DEPTNO#');openModal('editDept');
+
+javascript:$s('P251_ROLE_ID_1','#ROLE_ID#');openModal('editRole');
+// USED ICONS
+<span class="fa fa-arrow-circle-o-right" aria-hidden="true"></span>
+//forward
+<span class="fa fa-mail-forward" aria-hidden="true"></span>
+//edit
+<span aria-hidden="true" class="fa fa-edit" title= "Edit"></span>
+// user plus
+<span class="fa fa-user-plus" aria-hidden="true" title= "Rolle zuweisen"></span>
+<span class="fa fa-users" aria-hidden="true" title= "Rolle zuweisen"></span>
+//plus square
+<span class="fa fa-plus-square" aria-hidden="true"></span>
+// lupe
+<span class="fa fa-search" aria-hidden="true" title = 'Siehe'></span>
+
+
+
+<H4>Übersicht von Kandidaten <hr><br></H4>
+<span style="font-size:1.2em" "padding-right: 4em" "color=blue"><b> TEST </b></span>
+
+<span style="color:#THE_COLOR_STATUS#;font-weight:bold;">#EMST_STATE#</span>
+
+pkg_configuration.get_next_id('CANDIDATE_SECURITY_CHECKS');
+pkg_configuration.set_next_id('CANDIDATE_SECURITY_CHECKS');
+
+javascript:apex.confirm("Files Löschen?", {  request:"DELETE"});
+
+select {min-width:350px;}
+input.datepicker {min-width:320px;}
+input.text_field {min-width:350px;}
+input.number_field {max-width: 75px;}
+select {min-width:350px;}
+textarea {min-width:350px;}
+input.file {min-width:350px;}
+//labelContainer {width:auto;}
+#P301_CNDT_SKILLS_SHUTTLE_LEFT{font-size:8pt}
+#P301_CNDT_SKILLS_SHUTTLE_RIGHT{font-size:8pt}
+
+
+
+#CR_CNRL_heading{
+    width: 100%;
+    text-align: bottom;
+    line-height: 1.82;
+}
+#BTN_CNRL{float:right;}
+
+.t-Body-contentInner  { padding-top: 12px; }
+.t-Region .t-Region-body { padding-top: 12px; }
+.shuttleSelect1 select,.shuttleSelect2 select{width:300px;}
+#P307_SKIL_SHUTTLE_LEFT {font-size:8pt}
+#P307_SKIL_SHUTTLE_RIGHT{font-size:8pt}
+
+
+//put button in the right side of title of Report
+#KD_ANF{margin-top:10px;}
+#KD_ANF_heading{
+    width: 100%;
+    font-size: larger;
+    text-align: bottom;
+    line-height: 1.82;
+}
+#BTN_KD{float:right;}
+
+
+// put the title in the middle of ROw of intearctive report
+th.a-IRR-header {vertical-align:middle;}
+// put the title in the middle of ROw of classic report
+th.t-Report-colHead{vertical-align:middle;}
+
+
+.ui-datepicker-month
+
+#ui-datepicker-div
+
+#PRJ_SEARCH{max-width: 50%;}
+select {min-width:280px;}
+th.t-Report-colHead{vertical-align:middle;}
+
+
+select, textarea {min-width:280px;}
+input.datepicker{min-width:248px;}
+
+#ma-details {margin-left:10px;}
+textarea {min-width:280px;}
+input.text_field {min-width:280px;}
+number_field{min-width:20px;}
+#P503_CREQ_SECR_CLRC_REQUIRED.selectlist {min-width:20px;}
+
+#LH {
+    background-color: gray;
+    position: fixed;
+    top: 100px;
+    z-index: 999;
+    width: 97.8%;
+}
+
+
+background-color: gray;position: fixed;top: 100px;z-index: 999;width: 97.8%;
+
+
+
+page 306 kandidaten status
+
+th.a-IRR-header {vertical-align:middle;}
+#t_PageBody { overflow: hidden; }
+.t-Body-contentInner  { padding-top: 12px; }
+.t-Region .t-Region-body { padding-top: 12px; }
+
+
+
+th.a-IRR-header {vertical-align:middle;}
+.t-Body-contentInner  { padding-top: 12px; }
+.t-Region .t-Region-body { padding-top: 12px; }
+/*#t_PageBody { overflow: hidden; */
+
+//Interactive Grid: How to Fix Blank Toolbar DIV in css
+//http://apexbyg.blogspot.com/2017/12/interactive-grid-how-to-fix-blank.html
+.a-IG-header:empty{
+  padding:0;
+  border-bottom:0
+}
+--------------------------------------
+
+
+select 'Open Projects' label
+, count(*) value
+, 'f?p='||:APP_ID||':4:'||:APP_SESSION||':::::' link
+from eba_demo_projects
+where status_cd != 'COMPLETED'
+UNION ALL
+select 'Upcoming Milestones' label
+, count(*) value
+, 'f?p='||:APP_ID||':4:'||:APP_SESSION||':::::' link
+from eba_demo_proj_milestones
+where due_date > sysdate
+UNION ALL
+select 'Open Tasks' label
+, count(*) value
+, 'f?p='||:APP_ID||':4:'||:APP_SESSION||':::::' link
+from eba_demo_proj_tasks
+where is_complete_yn = 'N';
+
+
+
+
+
+function highlight_ir_cells() {
+    $(".IR_CNDT_STATE td[headers=cnst_id]").each(function(){
+        cellData = $(this).text();
+        if (cellData == '1') {
+            $(this).addClass('u-warning');
+        }
+        else if (cellData == '2') {
+            $(this).addClass('u-danger');
+        }
+    });
+};

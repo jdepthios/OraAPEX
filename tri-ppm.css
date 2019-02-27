@@ -1,0 +1,21 @@
+hr.style1 {
+  border-top:0px;
+  color:#eaeaea;
+}
+
+.t-AVPList-value,.t-AVPList-label {
+   font-size:12px !important
+}
+.t-Timeline-title {
+   font-size:14px !important;
+}
+
+.t-Timeline-username{
+   font-weight: bold;
+   font-size: 12px!important;
+}
+
+.t-Timeline-type.is-progress {
+ background-color: #ffb90f;
+ color:#FFF
+}
